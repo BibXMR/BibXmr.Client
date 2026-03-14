@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0;net9.0;net8.0</TargetFrameworks>
+    <LangVersion>latestMajor</LangVersion>
+    <Nullable>enable</Nullable>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <WarningsAsErrors>$(WarningsAsErrors);CS0419;CS1574;CS1580;CS1584;SA1611;SA1615</WarningsAsErrors>
+    <Deterministic>true</Deterministic>
+    <RootNamespace>BibXmr.Client</RootNamespace>
+    <AssemblyName>BibXmr.Client</AssemblyName>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>0.1.0-alpha</Version>
+    <RepositoryUrl>https://github.com/BibXMR/BibXmr.Client</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/BibXMR/BibXmr.Client</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>0.1.0-alpha: Initial public release.</PackageReleaseNotes>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- TODO: Add a real icon file (for example assets/nuget-icon.png), then set PackageIcon and pack it. -->
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Authors>omurad</Authors>
+    <Company>BibXMR</Company>
+    <Description></Description>
+    <PackageTags>bibxmr, monero, client, cryptocurrency, api, json-rpc, rpc, daemon, wallet, wallet-rpc</PackageTags>
+    <PackageId>BibXmr.Client</PackageId>
+    <Product>Monero RPC Client</Product>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <IsTrimmable>true</IsTrimmable>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <EnableAotAnalyzer>true</EnableAotAnalyzer>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Copyright>None</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Title>Full-featured RPC client for Monero daemon and wallet</Title>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Client.Test.Unit\**" />
+    <EmbeddedResource Remove="Client.Test.Unit\**" />
+    <None Remove="Client.Test.Unit\**" />
+    <Compile Remove="Client.Test.EndToEnd\**" />
+    <EmbeddedResource Remove="Client.Test.EndToEnd\**" />
+    <None Remove="Client.Test.EndToEnd\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" Link="LICENSE" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- System.Text.Json is inbox on supported modern .NET targets. -->
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
+
+

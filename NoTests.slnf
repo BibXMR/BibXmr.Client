@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "BibXmr.Client.slnx",
+    "projects": [
+      "Client/Client.csproj"
+    ]
+  }
+}
